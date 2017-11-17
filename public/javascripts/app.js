@@ -80,23 +80,23 @@ angular.module('playlist',['ui.router'])
                              'playlistFactory',
                              function($scope, $rootScope, $http, $window, $stateParams, playlistFactory){
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
-                             
+                             $scope.playlists = playlistFactory.playlists;
                              $scope.addMovie = function(){
                                 if($scope.bodyMovie == null) {
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
-                             /*$scope.playlist.movies.push({
-                                                          movietitle: $scope.bodyMovie
-                                                          });*/
-                             console.log($scope.playlist);
-                             return $http.put('/playlists/' + $scope.playlist._id + '/addmovie')
+                             $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
-                                      console.log("upvote worked");
                                       $scope.playlist.movies.push({
-                                                                   movietitle: $scope.bodyMovie
-                                                                   });
+                                                                  movietitle: $scope.bodyMovie
+                                                                  });
+                                      return $http.post('/playlists', $scope.playlist).success(function(data){
+                                                                                        $scope.playlists.push(data);
+                                                                                        });
                                       });
+                             
+                             console.log($scope.playlist);
                              $scope.bodyMovie = '';
                              };
                              $scope.remove = function(item) {
