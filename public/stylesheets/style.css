@@ -10,7 +10,7 @@ a {
   color: #00B7FF;
 }
 
-table {
+#playlist-table {
     border-style:solid;
     border-width:2px;
     border-radius:5px;
