@@ -79,7 +79,7 @@ angular.module('playlist',['ui.router'])
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
-                             $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&t=' + $scope.movie).done(function(data) {
+                             $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&t=' + $scope.movie).then(function(data) {
                              var Title = data.Title;
                              var Genre = data.Genre;
                              var Rated = data.Rated;
