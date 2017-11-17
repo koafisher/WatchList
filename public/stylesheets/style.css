@@ -7,6 +7,10 @@ body {
     background-image: url("https://www.smashingmagazine.com/wp-content/uploads/2011/08/stage-bg1.jpg");
 }
 
+h1 {
+    font-size: 32px;
+}
+
 input, select, textarea{
     border-radius:5px;
     padding:5px;
