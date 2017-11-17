@@ -26,7 +26,7 @@ angular.module('playlist',['ui.router'])
 .controller('MainCtrl', [
   '$scope','$http','$window','playlistFactory',
   function($scope, $http, $window, playlistFactory) {
-    $scope.playlists = [];//playlistFactory.playlists;
+    $scope.playlists = playlistFactory.playlists;
     $scope.create = function(playlist) {
       return $http.post('/playlists', playlist).success(function(data){
         $scope.playlists.push(data);
