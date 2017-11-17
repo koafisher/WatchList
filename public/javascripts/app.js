@@ -81,7 +81,6 @@ angular.module('playlist',['ui.router'])
                                 }
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
-                                      console.log($scope.movie);
                                       $scope.playlist.movies.push({
                                                                   movietitle: $scope.movie
                                                                   });
@@ -94,8 +93,15 @@ angular.module('playlist',['ui.router'])
                              $scope.bodyMovie = '';
                              };
                              $scope.remove = function(item) {
-                                var temp = $scope.playlist;
-                                var index = temp.movies.indexOf(item);
-                                temp.movies.splice(index, 1);
+                             $http.delete('/playlists/' + $scope.playlist._id )
+                             .success(function(data){
+                                var index = $scope.playlist.movies.indexOf(item);
+                                $scope.playlist.movies.splice(index, 1);
+                                      return $http.post('/playlists', $scope.playlist).success(function(data){
+                                                                                               $scope.playlists.push(data);
+                                                                                               });
+                                      });
+                             
                              };
+                             
                              }]);
