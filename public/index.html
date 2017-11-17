@@ -33,7 +33,7 @@
 <div class="row">
 <div class="col-lg-12">
 <div class="bs-component">
-<h4><a href="#/play/{{playlists.indexOf(playlist)}}">{{playlist.title}}</a>&nbsp; , <span class="glyphicon glyphicon-remove" ng-click="delete(playlist)"></span>&nbsp;
+<h4><a href="#/play/{{playlists.indexOf(playlist)}}">{{playlist.title}}</a>&nbsp; - <span class="glyphicon glyphicon-remove" ng-click="delete(playlist)"></span>&nbsp;
     <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(playlist)"></span>&nbsp; upvotes: {{playlist.upvotes}}</h4>
 
 
@@ -43,7 +43,7 @@
             <th> Movie Title </th>
             <th> Genre </th>
             <th> Rating </th>
-            <th>&nbsp; Runtime </th>
+            <th> Runtime </th>
         </tr>
     </thead>
     <tbody>
@@ -58,7 +58,7 @@
                 {{mov.rating}}
                 </td>
                 <td>
-                &nbsp;{{mov.runtime}}
+                {{mov.runtime}}
                 </td>
         </tr>
     </tbody>

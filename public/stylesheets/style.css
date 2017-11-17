@@ -9,3 +9,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+td {
+    padding:5px;
+}
+
+th {
+    padding:5px;
+}
