@@ -75,7 +75,7 @@ angular.module('playlist',['ui.router'])
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
                              $scope.playlists = playlistFactory.playlists;
                              $scope.addMovie = function(){
-                                if($scope.bodyMovie == null) {
+                                if($scope.movie == null) {
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
