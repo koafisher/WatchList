@@ -85,14 +85,17 @@ angular.module('playlist',['ui.router'])
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
-                             var temp = $scope.playlist;
-                             console.log(temp);
-                             $rootScope.$emit("CallDelete",$scope.playlist);
-                             temp.movies.push({
+                             /*$scope.playlist.movies.push({
                                                           movietitle: $scope.bodyMovie
-                                                          });
-                             console.log(temp);
-                             $rootScope.$emit("CallCreate",temp);
+                                                          });*/
+                             console.log($scope.playlist);
+                             return $http.put('/playlists/' + playlist._id + '/addmovie')
+                             .success(function(data){
+                                      console.log("upvote worked");
+                                      $scope.playlist.movies.push({
+                                                                   movietitle: $scope.bodyMovie
+                                                                   });
+                                      });
                              $scope.bodyMovie = '';
                              };
                              $scope.remove = function(item) {
