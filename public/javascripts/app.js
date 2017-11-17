@@ -80,15 +80,18 @@ angular.module('playlist',['ui.router'])
                                     return;
                                 }
                              $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&?t=' + $scope.movie).success(function(data) {
-                             console.log($scope.movie);
+                             var Title = data.Title;
+                             var Genre = data.Genre;
+                             var Rated = data.Rated;
+                             var Runtime = data.Runtime;
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
                                       $scope.playlist.movies.push({
-                                                                  movietitle: data.Title,
+                                                                  movietitle: Title,
                                                                   genre:
-                                                                  data.Genre,
-                                                                  rating:data.Rated,
-                                                                  runtime: data.Runtime
+                                                                  Genre,
+                                                                  rating:Rated,
+                                                                  runtime: Runtime
                                                                   });
                                       return $http.post('/playlists', $scope.playlist).success(function(data){
                                                                                         $scope.playlists.push(data);
