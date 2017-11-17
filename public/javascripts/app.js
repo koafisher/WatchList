@@ -24,8 +24,14 @@ angular.module('playlist',['ui.router'])
          $urlRouterProvider.otherwise('home');
          }])
 .controller('MainCtrl', [
-  '$scope','$http','$window','playlistFactory',
+  '$scope','$rootScope','$http','$window','playlistFactory',
   function($scope, $http, $window, playlistFactory) {
+    $rootScope.$on("CallDelete", function(play) {
+        $scope.delete(play);
+    });
+    $rootScope.$on("CallCreate", function(play) {
+        $scope.create(play);
+    });
     $scope.playlists = playlistFactory.playlists;
     $scope.create = function(playlist) {
       return $http.post('/playlists', playlist).success(function(data){
@@ -67,32 +73,32 @@ angular.module('playlist',['ui.router'])
 ])
 .controller('playlistCtrl', [
                              '$scope',
+                             '$rootScope',
                              '$window',
                              '$stateParams',
                              'playlistFactory',
-                             'MainCtrl',
-                             function($scope, $window, $stateParams, playlistFactory,MainCtrl){
+                             function($scope, $window, $stateParams, playlistFactory){
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
-                             $scope.delete = MainCtrl.delete;
-                             $scope.create = MainCtrl.create;
+                             
                              $scope.addMovie = function(){
                                 if($scope.bodyMovie == null) {
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
                              var temp = $scope.playlist;
-                             $scope.delete($scope.playlist);
+                             
+                             $rootScope.$emit("CallDelete",$scope.playlist);
                              temp.movies.push({
                                                           movietitle: $scope.bodyMovie
                                                           });
-                             $scope.create(temp);
+                             $rootScope.$emit("CallCreate",temp);
                              $scope.bodyMovie = '';
                              };
                              $scope.remove = function(item) {
                                 var temp = $scope.playlist;
                                 var index = temp.movies.indexOf(item);
                                 temp.movies.splice(index, 1);
-                                $scope.delete($scope.playlist);
-                                $scope.create(temp);
+                                $rootScope.$emit("CallDelete",$scope.playlist);
+                                $rootScope.$emit("CallCreate",temp);
                              };
                              }]);
