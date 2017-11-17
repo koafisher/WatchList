@@ -8,6 +8,8 @@ body {
 }
 
 input, select, textarea{
+    border-radius:5px;
+    padding:5px;
     color: #ff0000;
 }
 
@@ -26,6 +28,14 @@ a {
     border-color:white;
     border-width:5px;
     border-radius:5px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th {
+    border: 2px solid white;
 }
 
 td {
