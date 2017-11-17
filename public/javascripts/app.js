@@ -70,9 +70,11 @@ angular.module('playlist',['ui.router'])
                              '$window',
                              '$stateParams',
                              'playlistFactory',
-                             function($scope, $window, $stateParams, playlistFactory){
+                             'MainCtrl',
+                             function($scope, $window, $stateParams, playlistFactory,MainCtrl){
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
-                             
+                             $scope.delete = MainCtrl.delete;
+                             $scope.create = MainCtrl.create;
                              $scope.addMovie = function(){
                                 if($scope.bodyMovie == null) {
                                     $window.alert("Invalid Movie to add");
