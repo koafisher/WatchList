@@ -80,7 +80,7 @@ angular.module('playlist',['ui.router'])
                                     return;
                                 }
                              $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&?t=' + $scope.movie).success(function(data) {
-                             console.log(data);
+                             console.log($scope.movie);
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
                                       $scope.playlist.movies.push({
