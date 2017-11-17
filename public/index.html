@@ -19,6 +19,7 @@
             <div class="page-header">
                 <h1>WatchLists </h1>
             </div>
+            <p> Make a list for all the movies you want to watch. Click on the name of the list to add movies to the list by searching and getting the information gathered from OMDB (Open Movie Database).</p>
     <form ng-submit="addPlaylist()">
         <input type="text" ng-model="formContent" placeholder="Watchlist Name"></input>
         <button type="submit">New Movie Watch List</button>
@@ -43,7 +44,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="mov in playlist.movies | orderBy:'movietitle'">
+        <tr ng-repeat="mov in playlist.movies | orderBy:'runtime'">
                 <td>
                     {{mov.movietitle}}
                 </td>
