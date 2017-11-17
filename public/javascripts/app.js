@@ -84,6 +84,7 @@ angular.module('playlist',['ui.router'])
                              var Genre = data.Genre;
                              var Rated = data.Rated;
                              var Runtime = data.Runtime;
+                             console.log(Title);
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
                                       $scope.playlist.movies.push({
