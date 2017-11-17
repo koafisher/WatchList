@@ -79,12 +79,13 @@ angular.module('playlist',['ui.router'])
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
-                             $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&t=' + $scope.movie).success(function(data) {
+                             $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&t=' + $scope.movie).then(function(data) {
                              var Title = data.Title;
                              var Genre = data.Genre;
                              var Rated = data.Rated;
                              var Runtime = data.Runtime;
-                             console.log(data);
+                             console.log(data.Response);
+                             if (data.Response === "True") {
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data2){
                                       $scope.playlist.movies.push({
@@ -97,7 +98,7 @@ angular.module('playlist',['ui.router'])
                                       return $http.post('/playlists', $scope.playlist).success(function(data3){
                                                                                         $scope.playlists.push(data3);
                                                                                         });
-                                      });
+                                      });}
                                  });
                              console.log($scope.playlist);
                              $scope.movie = '';

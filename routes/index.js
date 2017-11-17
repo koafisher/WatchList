@@ -33,7 +33,6 @@ router.get('/playlists/:playlist', function(req, res) {
            res.json(req.playlist);
 });
 
-
 router.put('/playlists/:playlist/upvote', function(req, res, next) {
            req.playlist.upvote(function(err, playlist){
                               if (err) { return next(err); }
