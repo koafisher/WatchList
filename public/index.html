@@ -37,12 +37,24 @@
     <thead>
         <tr>
             <th>Movie Title</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Runtime</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="mov in playlist.movies | orderBy:'movietitle'">
                 <td>
                     {{mov.movietitle}}
+                </td>
+                <td>
+                {{mov.genre}}
+                </td>
+                <td>
+                {{mov.rating}}
+                </td>
+                <td>
+                {{mov.runtime}}
                 </td>
         </tr>
     </tbody>

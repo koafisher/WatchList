@@ -79,10 +79,15 @@ angular.module('playlist',['ui.router'])
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
+                             $http.get('http://www.omdbapi.com/?apikey=9bcfe30a&?t=' + $scope.movie).success(function(data) {
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
                                       $scope.playlist.movies.push({
-                                                                  movietitle: $scope.movie
+                                                                  movietitle: data.Title,
+                                                                  genre:
+                                                                  data.Genre,
+                                                                  rating:data.Rated,
+                                                                  runtime: data.Runtime
                                                                   });
                                       return $http.post('/playlists', $scope.playlist).success(function(data){
                                                                                         $scope.playlists.push(data);
