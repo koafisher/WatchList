@@ -33,7 +33,10 @@ angular.module('playlist',['ui.router'])
       });
     };
     $scope.addPlaylist = function() {
-      if($scope.formContent === '') {return;}
+      if($scope.formContent == null) {
+                         $window.alert("Must give list a name");
+                         return;
+                         }
       $scope.create({title:$scope.formContent, upvotes:0, movies:[]});
       $scope.formContent = '';
     };
@@ -75,13 +78,19 @@ angular.module('playlist',['ui.router'])
                                     $window.alert("Invalid Movie to add");
                                     return;
                                 }
-                             $scope.playlist.movies.push({
+                             var temp = $scope.playlist;
+                             $scope.delete($scope.playlist);
+                             temp.movies.push({
                                                           movietitle: $scope.bodyMovie
                                                           });
-                             $scope.body = '';
+                             $scope.create(temp);
+                             $scope.bodyMovie = '';
                              };
                              $scope.remove = function(item) {
-                                var index = $scope.playlist.movies.indexOf(item);
-                                $scope.playlist.movies.splice(index, 1);
+                                var temp = $scope.playlist;
+                                var index = temp.movies.indexOf(item);
+                                temp.movies.splice(index, 1);
+                                $scope.delete($scope.playlist);
+                                $scope.create(temp);
                              };
                              }]);

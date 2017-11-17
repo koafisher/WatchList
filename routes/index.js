@@ -40,6 +40,13 @@ router.put('/playlists/:playlist/upvote', function(req, res, next) {
                               });
 });
 
+router.put('/playlists/:playlist/addMovie', function(req, res, next) {
+           req.playlist.addMovie(function(err, playlist){
+                               if (err) { return next(err); }
+                               res.json(playlist);
+                               });
+           });
+
 router.delete('/playlists/:playlist', function(req, res) {
               console.log("in Delete");
               req.playlist.remove();
