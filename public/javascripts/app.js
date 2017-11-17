@@ -86,11 +86,12 @@ angular.module('playlist',['ui.router'])
                                     return;
                                 }
                              var temp = $scope.playlist;
-                             
+                             console.log(temp);
                              $rootScope.$emit("CallDelete",$scope.playlist);
                              temp.movies.push({
                                                           movietitle: $scope.bodyMovie
                                                           });
+                             console.log(temp);
                              $rootScope.$emit("CallCreate",temp);
                              $scope.bodyMovie = '';
                              };
