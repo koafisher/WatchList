@@ -23,13 +23,6 @@ a {
   color: #85CAFF;
 }
 
-#playlist-table {
-    border-style:solid;
-    border-color:white;
-    border-width:5px;
-    border-radius:5px;
-}
-
 table {
     border-collapse: collapse;
 }
