@@ -6,6 +6,11 @@ body {
     background-color:black;
 }
 
+input {
+    padding:5px;
+    border-radius:5px;
+}
+
 a {
   color: #00B7FF;
 }
