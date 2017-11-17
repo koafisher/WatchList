@@ -2,7 +2,7 @@ body {
     padding: 50px;
     font-family: 'Limelight', serif;
     font-size: 14px;
-    color:white;
+    color:#f0f0f0;
     background-color:black;
     background-image: url("https://www.smashingmagazine.com/wp-content/uploads/2011/08/stage-bg1.jpg");
 }
@@ -24,7 +24,7 @@ a {
 }
 
 table, th {
-    border: 2px solid white;
+    border: 2px solid #f0f0f0;
 }
 
 td {
