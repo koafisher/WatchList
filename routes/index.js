@@ -33,10 +33,6 @@ router.get('/playlists/:playlist', function(req, res) {
            res.json(req.playlist);
 });
 
-router.get('http://www.omdbapi.com/?apikey=9bcfe30a&?t=' + req.movie, function(req, res) {
-           res.sendStatus(200);
-           
-});
 
 router.put('/playlists/:playlist/upvote', function(req, res, next) {
            req.playlist.upvote(function(err, playlist){
