@@ -4,11 +4,7 @@ body {
     font-size: 14px;
     color:white;
     background-color:black;
-}
-
-input {
-    padding:5px;
-    border-radius:5px;
+    background-image: url("https://www.smashingmagazine.com/wp-content/uploads/2011/08/stage-bg1.jpg");
 }
 
 input, select, textarea{
