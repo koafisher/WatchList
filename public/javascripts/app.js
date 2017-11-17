@@ -90,7 +90,7 @@ angular.module('playlist',['ui.router'])
                              .success(function(data){
                                       console.log($scope.bodyMovie);
                                       $scope.playlist.movies.push({
-                                                                  movietitle: $scope.bodyMovie
+                                                                  movietitle: "String"
                                                                   });
                                       return $http.post('/playlists', $scope.playlist).success(function(data){
                                                                                         $scope.playlists.push(data);
