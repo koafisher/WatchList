@@ -1,5 +1,9 @@
 body {
-  padding: 50px;
+    padding: 50px;
+    font-family: 'Limelight', serif;
+    font-size: 14px;
+    color:white;
+    background-color:black;
 }
 
 a {
