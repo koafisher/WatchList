@@ -90,7 +90,7 @@ angular.module('playlist',['ui.router'])
                                       });
                              
                              console.log($scope.playlist);
-                             $scope.bodyMovie = '';
+                             $scope.movie = '';
                              };
                              $scope.remove = function(item) {
                              $http.delete('/playlists/' + $scope.playlist._id )
