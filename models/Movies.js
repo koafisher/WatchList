@@ -6,7 +6,7 @@ mongoose.model('Movie', MovieSchema);*/
 var PlaylistSchema = new mongoose.Schema({
                                          title: String,
                                          upvotes: Number,
-                                         movies: [{movietitle: String, rating: String}],
+                                         movies: [{movietitle: String}],
                                       });
 
 PlaylistSchema.methods.upvote = function(cb) {

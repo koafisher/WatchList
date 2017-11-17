@@ -88,6 +88,7 @@ angular.module('playlist',['ui.router'])
                                 }
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
+                                      console.log($scope.bodyMovie);
                                       $scope.playlist.movies.push({
                                                                   movietitle: $scope.bodyMovie
                                                                   });
