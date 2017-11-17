@@ -11,6 +11,11 @@ input {
     border-radius:5px;
 }
 
+button {
+    padding:5px;
+    border-radius:5px;
+}
+
 a {
   color: #00B7FF;
 }
