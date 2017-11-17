@@ -84,9 +84,9 @@ angular.module('playlist',['ui.router'])
                              var Genre = data.Genre;
                              var Rated = data.Rated;
                              var Runtime = data.Runtime;
-                             console.log(Title);
+                             console.log(data);
                              $http.delete('/playlists/' + $scope.playlist._id )
-                             .success(function(data){
+                             .success(function(data2){
                                       $scope.playlist.movies.push({
                                                                   movietitle: Title,
                                                                   genre:
@@ -94,8 +94,8 @@ angular.module('playlist',['ui.router'])
                                                                   rating:Rated,
                                                                   runtime: Runtime
                                                                   });
-                                      return $http.post('/playlists', $scope.playlist).success(function(data){
-                                                                                        $scope.playlists.push(data);
+                                      return $http.post('/playlists', $scope.playlist).success(function(data3){
+                                                                                        $scope.playlists.push(data3);
                                                                                         });
                                       });
                                  });
