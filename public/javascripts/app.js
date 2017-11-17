@@ -24,14 +24,8 @@ angular.module('playlist',['ui.router'])
          $urlRouterProvider.otherwise('home');
          }])
 .controller('MainCtrl', [
-  '$scope','$rootScope','$http','$window','playlistFactory',
-  function($scope, $rootScope, $http, $window, playlistFactory) {
-    $rootScope.$on("CallDelete", function(play) {
-        $scope.delete(play);
-    });
-    $rootScope.$on("CallCreate", function(play) {
-        $scope.create(play);
-    });
+  '$scope','$http','$window','playlistFactory',
+  function($scope, $http, $window, playlistFactory) {
     $scope.playlists = playlistFactory.playlists;
     $scope.create = function(playlist) {
       return $http.post('/playlists', playlist).success(function(data){
@@ -73,12 +67,11 @@ angular.module('playlist',['ui.router'])
 ])
 .controller('playlistCtrl', [
                              '$scope',
-                             '$rootScope',
                              '$http',
                              '$window',
                              '$stateParams',
                              'playlistFactory',
-                             function($scope, $rootScope, $http, $window, $stateParams, playlistFactory){
+                             function($scope, $http, $window, $stateParams, playlistFactory){
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
                              $scope.playlists = playlistFactory.playlists;
                              $scope.addMovie = function(){
@@ -88,9 +81,9 @@ angular.module('playlist',['ui.router'])
                                 }
                              $http.delete('/playlists/' + $scope.playlist._id )
                              .success(function(data){
-                                      console.log($scope.bodyMovie);
+                                      console.log($scope.movie);
                                       $scope.playlist.movies.push({
-                                                                  movietitle: $scope.bodyMovie.toString()
+                                                                  movietitle: $scope.movie
                                                                   });
                                       return $http.post('/playlists', $scope.playlist).success(function(data){
                                                                                         $scope.playlists.push(data);
@@ -104,7 +97,5 @@ angular.module('playlist',['ui.router'])
                                 var temp = $scope.playlist;
                                 var index = temp.movies.indexOf(item);
                                 temp.movies.splice(index, 1);
-                                $rootScope.$emit("CallDelete",$scope.playlist);
-                                $rootScope.$emit("CallCreate",temp);
                              };
                              }]);
