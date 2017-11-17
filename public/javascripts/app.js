@@ -25,7 +25,7 @@ angular.module('playlist',['ui.router'])
          }])
 .controller('MainCtrl', [
   '$scope','$rootScope','$http','$window','playlistFactory',
-  function($scope, $http, $window, playlistFactory) {
+  function($scope, $rootScope, $http, $window, playlistFactory) {
     $rootScope.$on("CallDelete", function(play) {
         $scope.delete(play);
     });
@@ -77,7 +77,7 @@ angular.module('playlist',['ui.router'])
                              '$window',
                              '$stateParams',
                              'playlistFactory',
-                             function($scope, $window, $stateParams, playlistFactory){
+                             function($scope, $rootScope, $window, $stateParams, playlistFactory){
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
                              
                              $scope.addMovie = function(){
