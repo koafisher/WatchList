@@ -93,7 +93,7 @@ angular.module('playlist',['ui.router'])
                                                                                         $scope.playlists.push(data);
                                                                                         });
                                       });
-                             
+                                 });
                              console.log($scope.playlist);
                              $scope.movie = '';
                              };
