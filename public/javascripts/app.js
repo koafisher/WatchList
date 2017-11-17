@@ -90,7 +90,7 @@ angular.module('playlist',['ui.router'])
                                                           movietitle: $scope.bodyMovie
                                                           });*/
                              console.log($scope.playlist);
-                             return $http.put('/playlists/' + playlist._id + '/addmovie')
+                             return $http.put('/playlists/' + $scope.playlist._id + '/addmovie')
                              .success(function(data){
                                       console.log("upvote worked");
                                       $scope.playlist.movies.push({
