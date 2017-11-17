@@ -74,10 +74,11 @@ angular.module('playlist',['ui.router'])
 .controller('playlistCtrl', [
                              '$scope',
                              '$rootScope',
+                             '$http',
                              '$window',
                              '$stateParams',
                              'playlistFactory',
-                             function($scope, $rootScope, $window, $stateParams, playlistFactory){
+                             function($scope, $rootScope, $http, $window, $stateParams, playlistFactory){
                              $scope.playlist = playlistFactory.playlists[$stateParams.id];
                              
                              $scope.addMovie = function(){
